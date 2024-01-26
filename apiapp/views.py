@@ -38,3 +38,11 @@ def booksAPI(request):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors)
+
+@api_view(['GET'])
+def oneBookAPI(request, bid):
+    # Book 테이블에서 bid 컬럼의 값이 bid인 값을 찾아 옵니다. 매개변수 == 오른쪽 매개변수
+    book = get_object_or_404(Book, bid = bid)
+    # 출력할 수 있도록 변환
+    serializer = BookSerializer(book)
+    return Response(serializer.data)
