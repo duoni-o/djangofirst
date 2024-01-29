@@ -46,3 +46,8 @@ def oneBookAPI(request, bid):
     # 출력할 수 있도록 변환
     serializer = BookSerializer(book)
     return Response(serializer.data)
+
+from django.shortcuts import render
+# 요청이 오면 templates 디렉토리의 ajax.html을 출력
+def ajax(request):
+    return render(request, "ajax.html")
